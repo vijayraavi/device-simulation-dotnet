@@ -7,7 +7,7 @@
   "Protocol": "MQTT",
   "Simulation": {
     "InitialState": {
-      "online": true,
+      "online" : true,
       "LightOn": true,
       "temperature": 75.0,
       "temperature_unit": "F"
@@ -38,7 +38,7 @@
           "temperature_unit": "text"
         }
       }
-    }
+    }    
   ],
   "CloudToDeviceMethods": {
     "LightOnOff": {

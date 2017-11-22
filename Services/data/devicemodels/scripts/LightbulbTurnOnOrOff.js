@@ -47,17 +47,17 @@ function main(context, previousState) {
     // update the state 
     updateState(state);
 
-    if (state.LightOn == true)
-    {
+    if (state.LightOn == true) {
         state.LightOn = false;
         state.DeviceMethodStatus = "Turned lightbulb off.";
-    } else
-    {
+    } else {
         state.LightOn = true;
         state.DeviceMethodStatus = "Turned lightbulb on.";
     }
 
     // update the state 
     updateState(state);
+
+    log("light is now: " + state.LightOn);
 
 }
