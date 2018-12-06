@@ -1,7 +1,9 @@
+:: Copyright (c) Microsoft. All rights reserved.
+
 @ECHO off & setlocal enableextensions enabledelayedexpansion
 
 :: Note: use lowercase names for the Docker images
-SET DOCKER_IMAGE=azureiotpcs/device-simulation-dotnet
+SET DOCKER_IMAGE=kirpasingh/drone-iot
 :: "testing" is the latest dev build, usually matching the code in the "master" branch
 SET DOCKER_TAG=%DOCKER_IMAGE%:testing
 
@@ -35,16 +37,12 @@ cd %APP_HOME%
 
     rmdir /s /q out\docker
     rmdir /s /q WebService\bin\Docker
-    rmdir /s /q SimulationAgent\bin\Docker
 
     mkdir out\docker\webservice
-    mkdir out\docker\simulationagent
 
     dotnet publish WebService      --configuration %CONFIGURATION% --output bin\Docker
-    dotnet publish SimulationAgent --configuration %CONFIGURATION% --output bin\Docker
 
     xcopy /s WebService\bin\Docker\*       out\docker\webservice\
-    xcopy /s SimulationAgent\bin\Docker\*  out\docker\simulationagent\
 
     copy scripts\docker\.dockerignore               out\docker\
     copy scripts\docker\Dockerfile                  out\docker\
